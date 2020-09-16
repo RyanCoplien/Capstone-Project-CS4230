@@ -1,5 +1,5 @@
 <head>
-<title>Query Database</title>
+<title>Record By Record</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Onstitute project">
@@ -14,7 +14,7 @@
 
 </body>
 
-<template name="queryDatabase">
+<template name="recordByRecord">
 <div class="super_container">
 	<!-- Header -->
 
@@ -64,7 +64,7 @@
                                     <li class="active"><a href="/home">Home</a></li>
                                     <li><a href="/aboutpage">About</a></li>
                                     <li><a href="/queryDatabase">Query Student</a></li>
-                                    <li><a href="/recordByRecord">Record by Record</a></li>
+                                    <li><a href="/recordByRecord">Record By Record</a></li>
                                     <li><a href="/coursespage">Courses</a></li>
                                     <li><a href="/blogpage">Blog</a></li>
                                     <!--<li><a href="#">Page</a></li>-->
@@ -178,21 +178,102 @@
 					<!-- Contact Form -->
 					<div class="col-lg-6">
 						<div class="contact_form">
-							<div class="contact_info_title">Query Student Form</div>
+							<div class="contact_info_title">Record Submission Form</div>
 							<form action="#" class="comment_form">
 								<div>
-									<div class="form_title">First name</div>
-									<input type="text" id="textFirstName" class="comment_input" required="required">
-								</div>
+								    <div class="form_title">Case ID</div>
+								    <input type="text" id="case_id" class="comment_input" required="required">
+								  </div>
 
-								<div>
-									<div class="form_title">Query Result</div>
-									<textarea id="textareaOtherInfo" class="comment_input comment_textarea"></textarea>
-								</div>
-								<div>
-									<button type="button" id="buttonsubmitqueryStudent" class="comment_button trans_200">Query Student</button>
-								</div>
-							</form>
+								  <div>
+								    <div class="form_title">Hospital Code</div>
+								    <input type="text" id="hospitalCode" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Hospital Type</div>
+								    <input type="text" id="hospitalType" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">City Hospital Code</div>
+								    <input type="text" id="CityHospitalCode" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Hospital Region</div>
+								    <input type="text" id="HospitalRegionCode" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Extra Rooms</div>
+								    <input type="text" id="extraRooms" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Dept</div>
+								    <input type="text" id="dept" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Ward Type</div>
+								    <input type="text" id="WardType" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Ward Facility Code</div>
+								    <input type="text" id="WardFacilityCode" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Bed Grade</div>
+								    <input type="text" id="BedGrade" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Patient ID</div>
+								    <input type="text" id="patientID" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">City Code</div>
+								    <input type="text" id="CityCode" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Type of Admission</div>
+								    <input type="text" id="TypeOfAdmission" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Severity of Illness</div>
+								    <input type="text" id="SeverityOfIllness" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Visitors</div>
+								    <input type="text" id="Visitors" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Age</div>
+								    <input type="text" id="Age" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Admission Deposit</div>
+								    <input type="text" id="AdmissionDeposit" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								    <div class="form_title">Stay</div>
+								    <input type="text" id="Stay" class="comment_input" required="required">
+								  </div>
+
+								  <div>
+								  	<button type="submit" id="UploadRecord" class="comment_button trans_200">Upload Record</button>
+								  </div>
+							  </form>
 						</div>
 					</div>
 
