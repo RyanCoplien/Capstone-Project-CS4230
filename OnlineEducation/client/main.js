@@ -105,5 +105,15 @@ Template.recordByRecord.events({
               if (err) console.log("mongoDB Error");
               else console.log("Record Submission Success");
         });
-      }        
+      },
+
+  'click #UploadBulkRecord' :function(event){
+		console.log("In button upload bulk record");
+		console.log("inside bulkRecordEntity");
+	    var fileID = document.getElementById('Bulkfile').files[0];
+	    Meteor.call("insert_BulkRecords",fileID, function(err, res){
+	          if (err) console.log("mongoDB Error");
+	          else console.log("Bulk Record Submission Success");
+	    });
+  	}        
 });

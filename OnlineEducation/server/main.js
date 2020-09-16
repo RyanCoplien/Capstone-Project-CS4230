@@ -100,6 +100,17 @@ Meteor.startup(function() {
           db.close();
         })
       });
+    },
+
+    insert_BulkRecords: function(fileID){
+      console.log("in insert_BulkRecords");
+      //var MongoClient = require('mongodb').MongoClient;
+      //var url = "mongodb://localhost:27017";
+      let exec = require('child_process').exec
+	  let command = ("mongoimport --type csv -d Hospital -c info2 --headerline --drop fileID")
+	  exec(command, (err, stdout, stderr) => {
+  	  // check for errors or if it was succesfuly
+	  })
     }
   })
 });
