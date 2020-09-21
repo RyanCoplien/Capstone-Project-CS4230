@@ -102,15 +102,20 @@ Meteor.startup(function() {
       });
     },
 
-    insert_BulkRecords: function(fileID){
+    insert_BulkRecords: function(res){
       console.log("in insert_BulkRecords");
-      //var MongoClient = require('mongodb').MongoClient;
-      //var url = "mongodb://localhost:27017";
-      let exec = require('child_process').exec
-	  let command = ("mongoimport --type csv -d Hospital -c info2 --headerline --drop fileID")
-	  exec(command, (err, stdout, stderr) => {
-  	  // check for errors or if it was succesfuly
-	  })
+      var MongoClient = require('mongodb').MongoClient;
+      var url = "mongodb://localhost:27017";
+      console.log("in info2");
+
+      MongoClient.connect(url, function(err, db) {
+      	var dbo = db.db("Hospital")
+      	dbo.collection("info2").insertMany(res, function(err, res){
+      		if(err) throw err;
+      		console.log("Inserted CSV");
+      		db.close();
+      	});
+      });
     }
   })
 });

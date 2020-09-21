@@ -109,11 +109,31 @@ Template.recordByRecord.events({
 
   'click #UploadBulkRecord' :function(event){
 		console.log("In button upload bulk record");
-		console.log("inside bulkRecordEntity");
-	    var fileID = document.getElementById('Bulkfile').files[0];
-	    Meteor.call("insert_BulkRecords",fileID, function(err, res){
-	          if (err) console.log("mongoDB Error");
-	          else console.log("Bulk Record Submission Success");
-	    });
+	    var file = document.querySelector('#Bulkfile').files[0];
+	    var reader = new FileReader();
+	    reader.readAsText(file);
+	    reader.onload = function(e) {
+    		var test = reader.result;
+    		var lines =test.split("\n");
+	   	 	var headers =lines[0].split(",");
+	    	var resultcsv = [];
+	    	for(var i=1;i<lines.length;i++) {
+		    	var obj = {};
+		    	var currentline = lines[i].split(",");
+
+		    	for(var j=0;j<headers.length;j++) {
+		    		if(j == 18) {
+		    			obj[headers[j]] = "";
+		    		} else {
+		    			obj[headers[j]] = currentline[j];
+		    		}
+		    	}
+	    		resultcsv.push(obj);
+	   		}
+	    	Meteor.call("insert_BulkRecords",resultcsv, function(err, res){
+	         	if (err) console.log("mongoDB Error");
+	          	else console.log("Bulk Record Submission Success");
+	    	});
+		};
   	}        
 });
