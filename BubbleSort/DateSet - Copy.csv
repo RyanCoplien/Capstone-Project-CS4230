@@ -1,0 +1,21 @@
+case_id,Hospital_code,Hospital_type_code,City_Code_Hospital,Hospital_region_code,Available Extra Rooms in Hospital,Department,Ward_Type,Ward_Facility_Code,Bed Grade,patientid,City_Code_Patient,Type of Admission,Severity of Illness,Visitors with Patient,Age,Admission_Deposit,Stay
+1,8,c,3,Z,3,radiotherapy,R,F,2,31397,7,Emergency,Extreme,2,51-60,4911,0-10
+14,9,d,5,Z,3,radiotherapy,S,F,3,31397,7,Urgent,Extreme,2,51-60,8477,21-30
+15,6,a,6,X,4,gynecology,Q,F,3,63418,8,Emergency,Extreme,2,71-80,2685,0-10
+16,6,a,6,X,3,gynecology,Q,F,3,63418,8,Emergency,Extreme,2,71-80,9398,0-10
+27,26,b,2,Y,4,anesthesia,Q,D,3,8088,2,Trauma,Moderate,2,31-40,5164,20-Nov
+28,26,b,2,Y,4,gynecology,R,D,3,8088,2,Trauma,Moderate,2,31-40,5055,21-30
+29,6,a,6,X,4,gynecology,Q,F,2,8088,2,Trauma,Moderate,4,31-40,3339,31-40
+30,27,a,7,Y,4,gynecology,R,C,2,8088,2,Trauma,Moderate,2,31-40,5757,21-30
+31,27,a,7,Y,3,gynecology,R,C,3,8088,2,Urgent,Moderate,4,31-40,4515,51-60
+32,19,a,7,Y,2,gynecology,R,C,2,28843,8,Emergency,Moderate,2,41-50,4201,0-10
+33,26,b,2,Y,2,gynecology,R,D,1,28843,8,Trauma,Moderate,2,41-50,3822,31-40
+34,5,a,1,X,4,gynecology,R,E,2,109338,5,Emergency,Moderate,3,31-40,4274,20-Nov
+35,5,a,1,X,3,gynecology,R,E,2,109338,5,Emergency,Moderate,3,31-40,5587,20-Nov
+36,10,e,1,X,3,gynecology,Q,E,2,109338,5,Emergency,Moderate,2,31-40,3088,0-10
+37,26,b,2,Y,3,gynecology,S,D,3,115513,7,Emergency,Minor,8,71-80,4110,21-30
+38,12,a,9,Y,2,radiotherapy,S,B,2,115513,7,Emergency,Minor,4,71-80,4531,31-40
+39,32,f,9,Y,2,radiotherapy,S,B,3,115513,7,Emergency,Minor,2,71-80,4971,20-Nov
+40,19,a,7,Y,2,radiotherapy,S,C,3,115513,7,Emergency,Minor,4,71-80,4718,71-80
+41,26,b,2,Y,1,radiotherapy,S,D,3,115513,7,Emergency,Minor,2,71-80,3650,0-10
+42,27,a,7,Y,2,radiotherapy,S,C,3,84932,8,Emergency,Moderate,2,31-40,5038,0-10
