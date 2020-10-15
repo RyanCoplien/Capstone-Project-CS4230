@@ -5,6 +5,7 @@ import './main.html';
 import './registrationNlogin.html';
 import './queryDatabase.html';
 import './recordByRecord.html';
+import './modularSetup.html';
 
 Router.route('Home', function(){
   this.render('Home');
@@ -20,6 +21,10 @@ Router.route('/queryDatabase', function(){
 
 Router.route('/recordByRecord', function(){
    this.render('recordByRecord');
+});
+
+Router.route('/modularSetup', function(){
+   this.render('modularSetup');
 });
 
 Router.route('/', function(){
