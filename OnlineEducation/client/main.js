@@ -24,9 +24,9 @@ Router.route('/recordByRecord', function(){
 });
 
 Router.route('/modularSetup', function(){
-   this.render('modularSetup');
+   this.render('modularSetup', {to:"main"});
+   this.render('queryDatabase1', {to:"footer"});
 });
-
 Router.route('/', function(){
     this.render('Home');
 });
