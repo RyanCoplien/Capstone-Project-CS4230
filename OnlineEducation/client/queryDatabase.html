@@ -64,7 +64,8 @@
                                     <li class="active"><a href="/home">Home</a></li>
                                     <li><a href="/aboutpage">About</a></li>
                                     <li><a href="/queryDatabase">Query Student</a></li>
-                                    <li><a href="/recordByRecord">Record by Record</a></li>
+									<li><a href="/recordByRecord">Record by Record</a></li>
+									<li><a href="/DataView">View Data</a></li>
                                     <li><a href="/modularSetup">Modular Setup</a></li>
                                     <li><a href="/coursespage">Courses</a></li>
                                     <li><a href="/blogpage">Blog</a></li>
@@ -130,49 +131,17 @@
                 <!--<li class="menu_mm"><a href="#">Page</a></li>-->
                 <li class="menu_mm"><a href="/contactpage">Contact</a></li>
 			</ul>
-		</nav>
+		</nav>		
 	</div>
 	
 	<!-- Home -->
 
 	<div class="home" style="width: 100%; height: 180px; background: #ffffff;">
-		<!-- Argo: This part should be fixed later to show the tree (path) of website-surfing
-        <div class="breadcrumbs_container">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="breadcrumbs">
-							<ul>
-								<li><a href="/Home">Home</a></li>
-								<li>Contact</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>-->
 	</div>
 
 	<!-- Contact -->
 
     <div class="contact">
-		
-        <!-- Contact Map. Google Map -->
-
-		<!--<div class="contact_map">
-			
-			<div class="map">
-				<div id="google_map" class="google_map">
-					<div class="map_container">
-						<div id="map"></div>
-					</div>
-				</div>
-			</div>
-
-		</div>-->
-
-		<!-- Contact Info -->
-
 		<div class="contact_info_container">
 			<div class="container">
 				<div class="row">
@@ -181,12 +150,28 @@
 					<div class="col-lg-6">
 						<div class="contact_form">
 							<div class="contact_info_title">Query Student Form</div>
-							<form action="#" class="comment_form">
-								<div>
-									<div class="form_title">First name</div>
-									<input type="text" id="textFirstName" class="comment_input" required="required">
-								</div>
 
+							<form action="#" class="comment_form">
+								<select id="hosp-category-ddl" name="categroyddl">
+									<option value="case_id">case_id</option>
+									<option value="hospitalCode">hospitalCode</option>
+									<option value="hospitalType">hospitalType</option>
+									<option value="CityHospitalCode">CityHospitalCode</option>
+									<option value="HospitalRegionCode">HospitalRegionCode</option>
+									<option value="extraRooms">extraRooms</option>
+									<option value="dept">dept</option>
+									<option value="WardType">WardType</option>
+									<option value="WardFacilityCode">WardFacilityCode</option>
+									<option value="BedGrade">BedGrade</option>
+									<option value="patientID">patientID</option>
+									<option value="CityCode">CityCode</option>
+									<option value="TypeOfAdmission">TypeOfAdmission</option>
+									<option value="SeverityOfIllness">SeverityOfIllness</option>
+									<option value="Visitors">Visitors</option>
+									<option value="Age">Age</option>
+									<option value="AdmissionDeposit">AdmissionDeposit</option>
+									<option value="Stay">Stay</option>
+								</select>
 								<div>
 									<div class="form_title">Query Result</div>
 									<textarea id="textareaOtherInfo" class="comment_input comment_textarea"></textarea>
@@ -195,6 +180,15 @@
 									<button type="button" id="buttonsubmitqueryStudent" class="comment_button trans_200">Query Student</button>
 								</div>
 							</form>
+							<p > </p>
+							<div>
+								<header>Query Results</header>
+								<ul>
+									{{#each result}}
+									{{> queryResult}}
+									{{/each}}
+								</ul>
+							</div>
 						</div>
 					</div>
 
@@ -345,6 +339,10 @@ Copyright &copy;<!--<script>document.write(new Date().getFullYear());</script>--
 </div>
 
 <script src="main.js"></script>
+<script src="DataView.js"></script>
+<script src="queryDatabase.js"></script>
+<script src="recordByRecord.js"></script>
+<script src="queryResults.js"></script>
 <!--<script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
@@ -354,6 +352,10 @@ Copyright &copy;<!--<script>document.write(new Date().getFullYear());</script>--
 <script src="plugins/marker_with_label/marker_with_label.js"></script>
 <script src="js/contact.js"></script>-->
 
+</template>
+
+<template name="queryResult">
+	<li>{{text}}</li>
 </template>
 
 

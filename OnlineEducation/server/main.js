@@ -118,4 +118,14 @@ Meteor.startup(function() {
       });
     }
   })
+
+  pull_singleRecord: function(searchCategory, searchValue){
+	  console.log("pulling single record");
+	  var dbo = db.db("Hospital")
+	  dbo.collection("info1").findOne({searchCategory: searchValue});
+		
+	  }
+	  
+    }
+  
 });

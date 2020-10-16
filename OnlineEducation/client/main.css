@@ -2,3 +2,8 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+grid-item {
+  grid-column-start: auto;
+  grid-row-start: auto;
+  margin: 5px;
+}
