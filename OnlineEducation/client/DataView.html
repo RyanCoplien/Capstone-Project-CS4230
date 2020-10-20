@@ -149,11 +149,28 @@
 						<div class="grid-container">
                             <div class="grid-item"></div>
                             <header>Hospital Resident Data</header>
-                             <ul>
-                                {{#each hospRecord}}
-                                  {{> records}}
-                                {{/each}}
-                            </ul>
+                             <table id="DataTable" border= 2>
+                                 <tr>
+                                     <th>case_id</th>
+                                     <th>hospital_code</th>
+                                     <th>hospital_type_code</th>
+                                     <th>city_code_hospital</th>
+                                     <th>hospital_region_code</th>
+                                     <th>available_rooms</th>
+                                     <th>dept</th>
+                                     <th>ward_type</th>
+                                     <th>ward_facility_code</th>
+                                     <th>bed_grade</th>
+                                     <th>patient_id</th>
+                                     <th>city_code_patient</th>
+                                     <th>type_of_admission</th>
+                                     <th>severity_of_illness</th>
+                                     <th>visitors_with_patient</th>
+                                     <th>age</th>
+                                     <th>admission_deposit</th>
+                                     <th>stay</th>
+                                 </tr>
+                             </table>
                         </div>
 					</div>
 					<!-- Contact Info -->				
@@ -169,7 +186,7 @@
     <script src="queryResults.js"></script>
   </template>
 
-  <template name="hospRecord">
+  <template name="hospRecord" onload="incrementCount(), listAllRecords()">
     <table>
         {{records}}
     </table>

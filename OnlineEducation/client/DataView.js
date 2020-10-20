@@ -25,6 +25,7 @@ Template.DataView.onCreate({
 	},
 
 	listAllRecords(){
+		document.getElementById("")
 		Meteor.call("pull_allRecords", function(err, result){
 			if(err) console.log("mongoDB error pulling all records");
 			else console.log("record pulled : " + result);

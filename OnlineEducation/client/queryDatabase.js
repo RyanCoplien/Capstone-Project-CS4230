@@ -19,16 +19,17 @@ Template.queryDatabase.events({
 				document.getElementById('textareaOtherInfo').value = "Students named " + textFirstName + 
 				" have birthdays on:" + "\n" + res;
 			});
-	}
+	},
 });
 
 Template.queryDatabase.helpers({
-	incrementCount(){
-		QueryRecordCounter++;
-	},
 	result: [
 		{text: 'This returns the query results'},
 	],
+	incrementCount(){
+		QueryRecordCounter++;
+	},
+	
 });
 
 Template.queryDatabase.onCreate({
