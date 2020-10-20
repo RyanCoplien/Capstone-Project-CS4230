@@ -150,8 +150,8 @@
                             <div class="grid-item"></div>
                             <header>Hospital Resident Data</header>
                              <ul>
-                                {{#each record}}
-                                {{> records}}
+                                {{#each hospRecord}}
+                                  {{> records}}
                                 {{/each}}
                             </ul>
                         </div>
@@ -169,6 +169,8 @@
     <script src="queryResults.js"></script>
   </template>
 
-  <template name="records">
-    <li>{{text}}</li>
+  <template name="hospRecord">
+    <table>
+        {{records}}
+    </table>
   </template>

@@ -72,6 +72,3 @@ Template.registrationNloginPage.events({
 			});
 	}
 });
-
- 
-
