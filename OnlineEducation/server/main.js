@@ -106,11 +106,11 @@ Meteor.startup(function() {
 			console.log("in insert_BulkRecords");
 			var MongoClient = require('mongodb').MongoClient;
 			var url = "mongodb://localhost:27017";
-			console.log("in info2");
+			console.log("in RawData");
 
 			MongoClient.connect(url, function(err, db) {
 				var dbo = db.db("Hospital")
-				dbo.collection("info2").insertMany(res, function(err, res){
+				dbo.collection("RawData").insertMany(res, function(err, res){
 					if(err) throw err;
 					console.log("Inserted CSV");
 					db.close();
@@ -122,14 +122,14 @@ Meteor.startup(function() {
 			console.log("in pull_singleRecord");
 			var MongoClient = require('mongodb').MongoClient;
 			var url = "mongodb://localhost:27017";
-			console.log("in info2");
+			console.log("in RawData");
 	
 			var query = {searchCategory: searchValue};	
 
 			MongoClient.connect(url, function(err, db) {
 				if (err) throw err;
 				var dbo = db.db("Hospital");
-				dbo.collection("info2").find(query).toArray(function(err, result) {
+				dbo.collection("RawData").find(query).toArray(function(err, result) {
 				  if (err) throw err;
 				  console.log(result);
 				  db.close();
@@ -138,13 +138,14 @@ Meteor.startup(function() {
 		},
 
 		pull_allRecords: function(){
+			alert("Hello! I am an alert box!!");
 			var MongoClient = require('mongodb').MongoClient;
 			var url = "mongodb://localhost:27017/";
-
+			console.log("WORKS")
 			MongoClient.connect(url, function(err, db) {
 				if (err) throw err;
 				var dbo = db.db("Hospital");
-				dbo.collection("info2").find({}).toArray(function(err, result) {
+				dbo.collection("RawData").find({}).toArray(function(err, result) {
 					if (err) throw err;
 					console.log(result);
 					db.close();
