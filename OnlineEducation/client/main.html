@@ -7,6 +7,8 @@
 
   {{> QueryPanel}}
   {{> DashBoard}}
+  {{>TabularRecords}}
+  <br><br>
   {{> BulkUpload}}
   {{> InputTemplate}}
   {{> DataView}}
@@ -24,7 +26,6 @@
 <template name = "DashBoard">
   <div>
     <textarea id="clientside" cols="16" rows="5"></textarea>
-    <input type="button" id="buttonTabularData" value="Show Tabular Data Format">
   </div>
 </template>
 
@@ -189,4 +190,31 @@
       <textarea id="textarea_comment" cols="16" rows="5"></textarea>
   </form>
   </template>
+
+<template name = "TabularRecords">
+  <h2>Convert JSON Data to HTML Table</h2>
+  <input type="button" id="buttonTabularData" value="Show Tabular Data Format">
+  <br><br>
+  <div style="width: 80%rem; height:400px; overflow:auto;"><table id="showData"></table></div>
+  <style>
+    th, td, p, input {
+        font:14px Verdana;
+    }
+    table, th, td 
+    {
+        border: solid 1px #DDD;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+    }
+    th {
+        font-weight:bold;
+    }
+    
+  </style>
+</template>
+
+
+  <!--noRoutesTemplate gets rid of routes which arent used in this current state and gets rid of the iron router link on the botton (Check main.js)-->
+  <template name="noRoutesTemplate"></template>
   
