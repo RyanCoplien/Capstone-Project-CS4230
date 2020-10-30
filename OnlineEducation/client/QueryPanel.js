@@ -32,12 +32,12 @@ Template.QueryPanel.events({
 
     'click #buttonServer':async function(event){
         var percent;
-        console.time("Server Count Timer");
+        
         percent = Meteor.call('ServerSideCount',function(err, res){ //calls the meteor function in the server/main.js
             console.log("Result" + res);
             document.getElementById("clientside").value = res.toPrecision(4) + "% of Radiotherapy Patients are from the ER."
         });
-        console.timeEnd("Server Count Timer");
+        
     }
 
 
