@@ -1,25 +1,192 @@
 <head>
-  <title>OnlineEducation</title>
+  <title>project</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>This is Whack</h1>
 
-  {{> hello}}
-  {{> info}}
+  {{> QueryPanel}}
+  {{> DashBoard}}
+  {{> BulkUpload}}
+  {{> InputTemplate}}
+  {{> DataView}}
+  {{> QueryTemplate}}
+  {{> QueryResults}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name = "QueryPanel">
+  <div>
+    <input type="button" id="buttonClient" value="Client Count">
+    <input type="button" id="buttonServer" value="Server Count">
+  </div>
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+<template name = "DashBoard">
+  <div>
+    <textarea id="clientside" cols="16" rows="5"></textarea>
+    <input type="button" id="buttonTabularData" value="Show Tabular Data Format">
+  </div>
 </template>
+
+<template name ="BulkUpload">
+  <input type='file' id="upload" name="filename">
+  <input type="submit" id="buttonQuerySubmit" value="Bulk Upload">
+</template>
+
+<template name="InputTemplate">
+<h2>Manual Record Input</h2>
+  <p>Please enter records</p>
+  <div>
+  <div class="form_title">Case ID</div>
+  <input type="text" id="caseid_text" required="required"/>
+  </div>
+  <div>
+  <div class="form_title">Hospital Code</div>
+  <input type="text" id="hosptialcode_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Hospital Type Code</div>
+  <input type="text" id="hospitaltypecode_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">City Code Hospital</div>
+  <input type="text" id="citycode_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Hosptial Region Code</div>
+  <input type="text" id="regioncode_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Available Beds</div>
+  <input type="text" id="availablebeds_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Department</div>
+  <input type="text" id="departmnet_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Ward Type</div>
+  <input type="text" id="wardtype_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Ward Facility Code</div>
+  <input type="text" id="wardcode_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Bed Grade</div>
+  <input type="text" id="bedgrade_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Patient ID</div>
+  <input type="text" id="patientid_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">City Code Patient</div>
+  <input type="text" id="citycodepatient_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Type of Admission</div>
+  <input type="text" id="type_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Severity of Illness</div>
+  <input type="text" id="severity_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Visitors With Patient</div>
+  <input type="text" id="visitors_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Age</div>
+  <input type="text" id="age_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Admission Deposit</div>
+  <input type="text" id="admission_text" required="required">
+  </div>
+  <div>
+  <div class="form_title">Stay</div>
+  <input type="text" id="stay_text" required="required">
+  </div>
+  <div>
+  <button type="submit" id="SubmitQueryButton">Sequential Upload</button>
+  </div>
+</template>
+
+<template name="DataView">
+  <h2>Data View</h2>
+  <div>
+    <input type="button" id="Loadbutton" value="Create Table">
+  </div>
+  <body>
+    <div id="table-wrapper">
+      <div id="table-scroll">
+        <thead>
+          <tr>
+            <th>Case ID</th>
+            <th>Hospital Code</th>
+            <th>Hospital Type Code</th>
+            <th>City Code Hospital</th>
+            <th>Department</th>
+            <th>Ward Type</th>
+            <th>Ward Code</th>
+            <th>Bed Grade</th>
+            <th>Patient ID</th>
+            <th>City Code Patient</th>
+            <th>Admission Type</th>
+            <th>Severity</th>
+            <th>Visitors</th>
+            <th>Age</th>
+            <th>Deposit</th>
+            <th>Stay</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+
+        </tbody>
+        </div>
+      </div>
+  </body>
+</template>
+
+<template name="QueryTemplate">
+  <h2>Query Template</h2>
+  <h3> Query The Database</h3>
+  <label for="choose">Choose a Field to Query:</label>
+  <form>
+  <select name="choose" id="choose">
+     <option value="case_id">Case ID</option>
+     <option value="Hospital_code">Hospital Code</option>
+     <option value="Hospital_type_code">Type Code</option>
+     <option value="City_code_Hospital">City Code</option>
+     <option value="Hospital_region_code">Region Code</option>
+     <option value="Available">Availability</option>
+     <option value="Department">Department</option>
+     <option value="Ward_Type">Ward Type</option>
+     <option value="Ward_Facility_Code">Facility Code</option>
+     <option value="BedGrade">Bed Grade</option>
+     <option value="patientID">Patient ID</option>
+     <option value="City_Code_Patient">Patient Code</option>
+     <option value="TypeOfAdmission">Admission Type</option>
+     <option value="SeverityOfIllness">Severity</option>
+     <option value="Visitors">Visitors Allowed</option>
+     <option value="age">Age</option>
+     <option value="Admission_Deposit">Admission Deposit</option>
+     <option value="Stay">Stay Duration</option>
+  </select>
+  <div>
+  <div class="inputTitle">Enter Search Term</div>
+  <input type="text" id="queryinput" class="comment_input" required="required">
+  </div>
+  <button type="submit" id="submitQuery">Run Query</button>
+  <p>{{counter}} Queries Processed</p>
+  </form>
+  </template>
+  <template name="QueryResults">
+  <p>Results</p>
+  <form>
+    <label for="textArea"></label>
+      <textarea id="textarea_comment" cols="16" rows="5"></textarea>
+  </form>
+  </template>
+  

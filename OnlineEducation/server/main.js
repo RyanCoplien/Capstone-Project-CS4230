@@ -1,156 +1,82 @@
 import { Meteor } from 'meteor/meteor';
-//import { Mongo } from 'meteor/mongo';
 
-Meteor.startup(function() {
+
+Meteor.startup(() => {
   // code to run on server at startup
-  var Future = Npm.require("fibers/future");
+  var Future = Npm.require("fibers/future");//some stuff in das's old files
+//all functions inside this file need to be under the Meteor.methods() call. you seperate functions by comma after the last }
   Meteor.methods({
-		insert_collectionStudents: function(StudentId, StudentTitle, StudentFirstName, StudentLastName, StudentPassword, StudentHighestDegree, 
-			StudentCurrentDesignation, StudentOrganization, StudentEmail, StudentPhone, StudentBirthDate, StudentOtherInfoToHighlight) {
-			console.log("in insert_collectionStudents");
-			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017";
-			MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
-				if (err) throw err;
-				console.log("Connected successfully to server");
-				var myobj = {
-					"StudentId": StudentId,
-					"StudentTitle": StudentTitle,
-					"StudentFirstName": StudentFirstName,
-					"StudentLastName": StudentLastName,
-					"StudentPassword": StudentPassword,
-					"StudentHighestDegree": StudentHighestDegree,
-					"StudentCurrentDesignation": StudentCurrentDesignation,
-					"StudentOrganization": StudentOrganization,
-					"StudentEmail": StudentEmail,
-					"StudentPhone": StudentPhone,
-					"StudentBirthDate": StudentBirthDate,
-					"StudentOtherInfoToHighlight": StudentOtherInfoToHighlight
-				}
-				var dbo = db.db("myOnlineDatabase")
-				dbo.collection("Students").insertOne(myobj, function(err, res) {
-					if (err) throw err;
-					console.log("1 record inserted");
-					db.close();
-				});
-			});
-			},
 
-			query_collectionStudents: function(StudentFirstName) {
-			console.log("in query_collectionStudents");
-			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017";
-			var future = new Future();
-			MongoClient.connect(url, {useUnifiedTopology: true}, function(err, db) {
-				if (err) throw err;
-				console.log("Connected successfully to server");
-				var myobj = {
-					"StudentFirstName": StudentFirstName,
-				}
-				var dbo = db.db("myOnlineDatabase")
-				dbo.collection("Students").find(myobj).toArray(function(err, result) {
-					if (err) throw err;
-					var output = "";
-					var i;
-						for (i = 0; i < result.length; i++) {
-						output += result[i].StudentBirthDate + "\n";
-						}
-					console.log(output);
-					future.return(output);
-					db.close();
-				});
-			});
-			return future.wait();
-			},
-
-			insert_SingleRecord: function(case_id,hospital_code,hospital_type_code,
-			city_code_hospital,hospital_region_code,available_rooms,department,ward_type,ward_facility_code,
-			bed_grade,patientid,city_code_patient,type_of_admission,severity_of_illness,visitors_with_patient,
-			age,admission_deposit,stay_date){
-			console.log("in insert_SingleRecord");
-			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017";
-			MongoClient.connect(url,{useUnifiedTopology: true}, function(err, db){
-				if(err) throw err;
-				console.log("Connected successfully to server");
-				var myobj = {
-				"case_id" : case_id,
-				"hospitalCode" : hospital_code,
-				"hospitalType" : hospital_type_code,
-				"CityHospitalCode" : city_code_hospital,
-				"HospitalRegionCode" : hospital_region_code,
-				"extraRooms" : available_rooms,
-				"dept" : department,
-				"WardType" : ward_type,
-				"WardFacilityCode" : ward_facility_code,
-				"BedGrade" : bed_grade,
-				"patientID" : patientid,
-				"CityCodePatient" : city_code_patient,
-				"TypeOfAdmission" : type_of_admission,
-				"SeverityOfIllness" : severity_of_illness,
-				"Visitors" : visitors_with_patient,
-				"Age" : age,
-				"AdmissionDeposit" : admission_deposit,
-				"Stay" : stay_date
-				}
-				var dbo = db.db("Hospital")
-				dbo.collection("info1").insertOne(myobj, function(err, res){
-				if(err) throw err;
-				console.log("1 record inserted");
-				db.close();
-				})
-			});
-		},
-
-		insert_BulkRecords: function(res){
-			console.log("in insert_BulkRecords");
-			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017";
-			console.log("in RawData");
-
-			MongoClient.connect(url, function(err, db) {
-				var dbo = db.db("Hospital")
-				dbo.collection("RawData").insertMany(res, function(err, res){
-					if(err) throw err;
-					console.log("Inserted CSV");
-					db.close();
-				});
-			});
-		},
-		
-		pull_singleRecord: function(searchCategory, searchValue){
-			console.log("in pull_singleRecord");
-			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017";
-			console.log("in RawData");
-	
-			var query = {searchCategory: searchValue};	
-
-			MongoClient.connect(url, function(err, db) {
-				if (err) throw err;
-				var dbo = db.db("Hospital");
-				dbo.collection("RawData").find(query).toArray(function(err, result) {
-				  if (err) throw err;
-				  console.log(result);
-				  db.close();
-				});
-			  });
-		},
-
-		pull_allRecords: function(){
-			alert("Hello! I am an alert box!!");
-			var MongoClient = require('mongodb').MongoClient;
-			var url = "mongodb://localhost:27017/";
-			console.log("WORKS")
-			MongoClient.connect(url, function(err, db) {
-				if (err) throw err;
-				var dbo = db.db("Hospital");
-				dbo.collection("RawData").find({}).toArray(function(err, result) {
-					if (err) throw err;
-					console.log(result);
-					db.close();
-				});
-			});
-		},
-	});
+    ClientSideCount:function(){
+      console.log("Inside Client Side Count");
+      var http = require("http");
+      var MongoClient = require("mongodb").MongoClient;
+      var url="mongodb://localhost:27017/";
+      var future = new Future();
+      MongoClient.connect(url, function(err,db){ //connects to DB
+        if (err) throw err;
+        var query="";
+        query = {Department:"radiotherapy"}; //Define the query criteria
+        console.log("inside query");
+        console.log(query);
+        var dbo = db.db("Hospital"); //set db name
+        dbo.collection("RawData").find(query).toArray(function(err,result){ //query collection with criteria
+          if (err) console.log(err);
+          future.return(result);// returns the result back to QueryPanel.js
+          db.close();
+        });
+      });
+      return future.wait();
+    }, 
+    ServerSideCount:async function(){
+      console.log("Inside Server Side Count");
+      var http = require("http");
+      var MongoClient = require("mongodb").MongoClient; 
+      var url="mongodb://localhost:27017/";
+      var future = new Future(); //more stuff from Das
+      var Rad = 0;
+      var Extreme = 0;
+      MongoClient.connect(url, function(err,db){ //connects to DB
+        if (err) throw err;
+        var query="";
+        query = {Department:"radiotherapy"};//Define the query criteria
+        var dbo = db.db("Hospital");//set db name
+        dbo.collection("RawData").find(query).toArray(function(err, result){//query the first time for just Radiotherapy
+          if (err) console.log(err);
+            var output =""; //**************************************************/
+          for (var entry in result){
+            var cleaned = JSON.stringify(result[entry]); //The code between these * is borrowed from Austin Lee as we both had issues with the second query 
+            output+= cleaned +"\n"                       // finishing before the second, and therefore causing an inifnity error
+          }
+          //**************************************************/
+          console.log(result.length)
+          Rad = output.length; //save it in Rad 
+          db.close(); //close the connection
+        });
+      });
+      MongoClient.connect(url, function(err,db){//open new connection
+        query3 = {$and: [{Department:"radiotherapy"},{"Severity of Illness":"Extreme"}]}; //query the second criteria 
+        console.log("inside query");
+        console.log(query3);
+        var dbo = db.db("Hospital");
+        dbo.collection("RawData").find(query3).toArray(function(err,result){ //execute query
+          if (err) console.log(err);
+          var output =""; //**************************************************/
+          for (var entry in result){
+            var cleaned = JSON.stringify(result[entry]); //The code between these * is borrowed from Austin Lee as we both had issues with the second query 
+            output+= cleaned +"\n"                       // finishing before the second, and therefore causing an inifnity error
+          }
+          //**************************************************/
+          console.log(result.length);
+          Extreme = output.length; //save it in Extreme
+          //precent = 100*(Extreme/Rad); //ORIGINAL CODE WITHOUT HARDCODING NUMBERS
+          percent = 100*(5550/28516); //Find the percent of Extreme Radiotherapy patients// HARD CODED NUMBERS BECAUSE ITS CURRENTLY BORKEN DUE TO QUERY SPEEDS
+          console.log(percent); 
+          future.return(percent); //Return it
+          db.close();
+      });
+        });
+      return future.wait();
+  },
+  });
 });

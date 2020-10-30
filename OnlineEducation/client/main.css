@@ -2,12 +2,15 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
-grid-item {
-  grid-column-start: auto;
-  grid-row-start: auto;
-  margin: 5px;
+textarea {
+  min-width: 200px;
+  min-height: 200px;
 }
-table, th, td {
-  border: 1px solid black;
-  padding: 5px;
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:150px;
+  overflow:auto;
+  margin-top:20px;
 }
