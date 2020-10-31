@@ -92,5 +92,27 @@ Meteor.startup(() => {
       return future.wait();
     },
 
+    ViewData:function(){ //quires database to list all the records in the database
+    console.log("Inside ViewData");
+      var http = require("http");
+      var MongoClient = require("mongodb").MongoClient;
+      var url="mongodb://localhost:27017/";
+      var future = new Future();
+      MongoClient.connect(url, function(err,db){ //connects to DB
+        if (err) throw err;
+        var query="";
+        //query = {$and: [{Department:"radiotherapy"},{"Severity of Illness":"Extreme"}]}; //Define the query criteria
+        console.log("inside query");
+        console.log(query);
+        var dbo = db.db("Hospital"); //set db name
+        dbo.collection("RawData").find().toArray(function(err,result){ //query collection with criteria
+          if (err) console.log(err);
+          future.return(result);// returns the result back to QueryPanel.js
+          db.close();
+        });
+      });
+      return future.wait();
+    },
+
   });
 });

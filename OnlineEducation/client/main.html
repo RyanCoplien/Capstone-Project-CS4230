@@ -9,9 +9,9 @@
   {{> DashBoard}}
   {{>TabularRecords}}
   <br><br>
+  {{> DataView}}
   {{> BulkUpload}}
   {{> InputTemplate}}
-  {{> DataView}}
   {{> QueryTemplate}}
   {{> QueryResults}}
 </body>
@@ -116,38 +116,25 @@
 
 <template name="DataView">
   <h2>Data View</h2>
-  <div>
-    <input type="button" id="Loadbutton" value="Create Table">
-  </div>
-  <body>
-    <div id="table-wrapper">
-      <div id="table-scroll">
-        <thead>
-          <tr>
-            <th>Case ID</th>
-            <th>Hospital Code</th>
-            <th>Hospital Type Code</th>
-            <th>City Code Hospital</th>
-            <th>Department</th>
-            <th>Ward Type</th>
-            <th>Ward Code</th>
-            <th>Bed Grade</th>
-            <th>Patient ID</th>
-            <th>City Code Patient</th>
-            <th>Admission Type</th>
-            <th>Severity</th>
-            <th>Visitors</th>
-            <th>Age</th>
-            <th>Deposit</th>
-            <th>Stay</th>
-          </tr>
-        </thead>
-        <tbody id="tablebody">
-
-        </tbody>
-        </div>
-      </div>
-  </body>
+  <input type="button" id="DataViewbtn" value="View MongoDB Data">
+  <br><br>
+  <div style="width: 80%rem; height:400px; overflow:auto;"><table id="showDataView"></table></div>
+  <style>
+    th, td, p, input {
+        font:14px Verdana;
+    }
+    table, th, td 
+    {
+        border: solid 1px #DDD;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+    }
+    th {
+        font-weight:bold;
+    }
+    
+  </style>
 </template>
 
 <template name="QueryTemplate">
