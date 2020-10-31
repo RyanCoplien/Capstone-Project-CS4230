@@ -142,7 +142,7 @@
   <h3> Query The Database</h3>
   <label for="choose">Choose a Field to Query:</label>
   <form>
-  <select name="choose" id="choose">
+  <select name="choose" id="dropdown">
      <option value="case_id">Case ID</option>
      <option value="Hospital_code">Hospital Code</option>
      <option value="Hospital_type_code">Type Code</option>
@@ -164,12 +164,13 @@
   </select>
   <div>
   <div class="inputTitle">Enter Search Term</div>
-  <input type="text" id="queryinput" class="comment_input" required="required">
+  <input type="text" id="input" class="comment_input" required="required">
   </div>
-  <button type="submit" id="submitQuery">Run Query</button>
+  <button id="submitQuery">Run Query</button>
   <p>{{counter}} Queries Processed</p>
   </form>
   </template>
+
   <template name="QueryResults">
   <p>Results</p>
   <form>

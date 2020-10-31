@@ -100,7 +100,6 @@ Meteor.startup(() => {
       var future = new Future();
       MongoClient.connect(url, function(err,db){ //connects to DB
         if (err) throw err;
-        var query="";
         //query = {$and: [{Department:"radiotherapy"},{"Severity of Illness":"Extreme"}]}; //Define the query criteria
         console.log("inside query");
         console.log(query);
@@ -113,6 +112,29 @@ Meteor.startup(() => {
       });
       return future.wait();
     },
+    Query:function(query){ //quires database to list all the records in the database
+      console.log("Inside Query");
+        var http = require("http");
+        var MongoClient = require("mongodb").MongoClient;
+        var url="mongodb://localhost:27017/";
+        var future = new Future();
+        MongoClient.connect(url, function(err,db){ //connects to DB
+          if (err) throw err;
+          //var query1= field + ":" + value;
+          //var query = {case_id:"2"};
+          //query = {$and: [{Department:"radiotherapy"},{"Severity of Illness":"Extreme"}]}; //Define the query criteria
+          console.log("inside query");
+          console.log(query);
+          var dbo = db.db("Hospital"); //set db name
+          dbo.collection("RawData").find(query).toArray(function(err,result){ //query collection with criteria
+            if (err) console.log(err);
+            console.log(result);
+            future.return(result);// returns the result back to QueryPanel.js
+            db.close();
+          });
+        });
+        return future.wait();
+      },
 
   });
 });
