@@ -11,7 +11,7 @@
   <br><br>
   {{> DataView}}
   {{> BulkUpload}}
-  {{> InputTemplate}}
+  {{> RecordByRecordTemplate}}
   {{> QueryTemplate}}
   {{> QueryResults}}
 </body>
@@ -34,7 +34,7 @@
   <input type="submit" id="buttonQuerySubmit" value="Bulk Upload">
 </template>
 
-<template name="InputTemplate">
+<template name="RecordByRecordTemplate">
 <h2>Manual Record Input</h2>
   <p>Please enter records</p>
   <div>
@@ -110,7 +110,8 @@
   <input type="text" id="stay_text" required="required">
   </div>
   <div>
-  <button type="submit" id="SequentialUpload">Sequential Upload</button>
+    <br>
+    <input type="button" id="uploadRecord" value="Insert Record">
   </div>
 </template>
 
