@@ -68,7 +68,7 @@ Meteor.startup(() => {
       });
     
       return future.wait();
-  },
+     },
 
   
   TabularListAllRecords:function(){ //quires database to list all the records where Department is 'radiotherapy' and Severity of Illness is 'Extreme' in a tabular format
@@ -135,7 +135,7 @@ Meteor.startup(() => {
           });
         });
         return future.wait();
-      },
+    },
 
       UploadRecordByRecord:function(case_id, hospital_code, hospital_type_code,
         city_code_hospital, hospital_region_code, available_rooms, department, ward_type, ward_facility_code,
@@ -211,7 +211,29 @@ Meteor.startup(() => {
           }
           );
           return future.wait();
-        }
+    },
+
+        BulkUpload:function(query){ //quires database to list all the records in the database equal to fields
+          console.log("Inside Query");
+          console.log(query);
+            var http = require("http");
+            var MongoClient = require("mongodb").MongoClient;
+            var url="mongodb://localhost:27017/";
+            var future = new Future();
+            MongoClient.connect(url, function(err,db){ //connects to DB
+              if (err) throw err;
+              console.log("inside query");
+              var dbo = db.db("Hospital"); //set db name
+              dbo.collection("RawData").insertOne(query,function(err,result){ //query collection with criteria
+                if (err) console.log(err);
+                console.log(result);
+                future.return(result);// returns the result back to .js
+                db.close();
+              });
+            });
+            return future.wait();
+          },
+    
 
   });
 });
