@@ -4,10 +4,11 @@ Template.DataView.events({
     'click #DataViewbtn':function(event){
         alert("This will take a while, and might crash the browesr.")
         console.log("Beginning Query")
+
         Meteor.call('ViewData',function(err, res){
 
-            var hospitalRecords = res;
-        
+        var hospitalRecords = res;
+        console.log("Data Aquired");
             // EXTRACT VALUE FOR HTML HEADER. 
             var col = [];
             for (var i = 0; i < hospitalRecords.length; i++) {
@@ -17,6 +18,7 @@ Template.DataView.events({
                     }
                 }
             }
+            console.log("First Loop Done!");
             
             var table = document.createElement("table");
 
@@ -26,6 +28,7 @@ Template.DataView.events({
                     th.innerHTML = col[i];
                     tr.appendChild(th);
                 }
+                console.log("Second Loop Done!");
         
                 for (var i = 0; i < hospitalRecords.length; i++) {
                                                                     //inserts data
@@ -36,6 +39,8 @@ Template.DataView.events({
                         tabCell.innerHTML = hospitalRecords[i][col[j]];
                     }
                 }
+                console.log("Third Loop Done!")
+
                  var divContainer = document.getElementById("showDataView"); //appends data to html
                  divContainer.innerHTML = "";
                  divContainer.appendChild(table);

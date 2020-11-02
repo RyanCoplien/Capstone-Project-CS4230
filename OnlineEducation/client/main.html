@@ -110,7 +110,7 @@
   <input type="text" id="stay_text" required="required">
   </div>
   <div>
-  <button type="submit" id="SubmitQueryButton">Sequential Upload</button>
+  <button type="submit" id="SequentialUpload">Sequential Upload</button>
   </div>
 </template>
 
@@ -166,17 +166,31 @@
   <div class="inputTitle">Enter Search Term</div>
   <input type="text" id="input" class="comment_input" required="required">
   </div>
-  <button id="submitQuery">Run Query</button>
+  
+  <input type="button" id="submitQuery" value="Run Query">
   <p>{{counter}} Queries Processed</p>
   </form>
   </template>
 
   <template name="QueryResults">
   <p>Results</p>
-  <form>
-    <label for="textArea"></label>
-      <textarea id="textarea_comment" cols="16" rows="5"></textarea>
-  </form>
+  <div style="width: 80%rem; height:400px; overflow:auto;"><table id="showQueryResults"></table></div>
+  <style>
+    th, td, p, input {
+        font:14px Verdana;
+    }
+    table, th, td 
+    {
+        border: solid 1px #DDD;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+    }
+    th {
+        font-weight:bold;
+    }
+    
+  </style>
   </template>
 
 <template name = "TabularRecords">

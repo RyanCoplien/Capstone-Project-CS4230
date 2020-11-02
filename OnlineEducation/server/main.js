@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { stringify } from 'querystring';
 
 
 Meteor.startup(() => {
@@ -100,11 +101,9 @@ Meteor.startup(() => {
       var future = new Future();
       MongoClient.connect(url, function(err,db){ //connects to DB
         if (err) throw err;
-        //query = {$and: [{Department:"radiotherapy"},{"Severity of Illness":"Extreme"}]}; //Define the query criteria
         console.log("inside query");
-        console.log(query);
         var dbo = db.db("Hospital"); //set db name
-        dbo.collection("RawData").find().toArray(function(err,result){ //query collection with criteria
+        dbo.collection("RawData").find({}).toArray(function(err,result){ //query collection with criteria
           if (err) console.log(err);
           future.return(result);// returns the result back to QueryPanel.js
           db.close();
@@ -112,21 +111,23 @@ Meteor.startup(() => {
       });
       return future.wait();
     },
-    Query:function(query){ //quires database to list all the records in the database
+    
+    Query:function(field,query){ //quires database to list all the records in the database equal to fields
       console.log("Inside Query");
+      console.log(query);
+      console.log(field);
+      var finalQuery = {}; //creates query params
+      finalQuery[field] = query; //creates query
         var http = require("http");
         var MongoClient = require("mongodb").MongoClient;
         var url="mongodb://localhost:27017/";
         var future = new Future();
         MongoClient.connect(url, function(err,db){ //connects to DB
           if (err) throw err;
-          //var query1= field + ":" + value;
-          //var query = {case_id:"2"};
-          //query = {$and: [{Department:"radiotherapy"},{"Severity of Illness":"Extreme"}]}; //Define the query criteria
           console.log("inside query");
-          console.log(query);
+          console.log(finalQuery);
           var dbo = db.db("Hospital"); //set db name
-          dbo.collection("RawData").find(query).toArray(function(err,result){ //query collection with criteria
+          dbo.collection("RawData").find(finalQuery).toArray(function(err,result){ //query collection with criteria
             if (err) console.log(err);
             console.log(result);
             future.return(result);// returns the result back to QueryPanel.js
