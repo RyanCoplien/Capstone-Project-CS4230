@@ -16,3 +16,4 @@ This can be done through commands or utiling the MongoDB Compass. I would reccom
 1. Create a MongoDB database called Hospital (https://beginnersbook.com/2017/09/mongodb-create-database/). 
 2. Create collection called RawData (https://beginnersbook.com/2017/09/mongodb-create-collection/).
 3. Import data.csv into RawData (https://kb.objectrocket.com/mongo-db/how-to-import-a-csv-into-mongodb-327).
+4. Run the follwoing command before running the Meteor: meteor npm install --save mongodb
