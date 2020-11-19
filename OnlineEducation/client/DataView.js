@@ -1,9 +1,18 @@
 import { Template } from 'meteor/templating';
 
+
+
 Template.DataView.events({
     'click #DataViewbtn':function(event){
         alert("This will take a while, and might crash the browesr.")
         console.log("Beginning Query")
+
+        paginator({
+            table: document.getElementById("table_box_native").getElementsByTagName("table")[0],
+            box: document.getElementById("index_native"),
+            active_class: "color_page"
+        });
+
 
         Meteor.call('ViewData',function(err, res){
 

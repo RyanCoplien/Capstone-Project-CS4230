@@ -10,6 +10,8 @@ Template.QueryTemplate.events({
         console.log("Searching records that contain: " + query);
 
         Meteor.call(functionname.toString(),field,query,function(err,result){
+            var table = document.createElement("table");
+            table.innerHTML = "";
             
         var hospitalRecords = result;
         console.log("Data Aquired");
@@ -24,7 +26,7 @@ Template.QueryTemplate.events({
             }
             console.log("First Loop Done!");
             
-            var table = document.createElement("table");
+            
 
             var tr = table.insertRow(-1);                   // TABLE ROW.
                 for (var i = 0; i < col.length; i++) {

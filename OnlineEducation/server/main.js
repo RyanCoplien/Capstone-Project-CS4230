@@ -205,7 +205,7 @@ Meteor.startup(() => {
             dbo.collection("RawData").insertOne(finalQuery, function(err, res) {
               if (err) throw err;
               console.log("1 document inserted");
-              //future.return(res); This doesnt seem to work for some reason not sure why
+              future.return(res); //This doesnt seem to work for some reason not sure why
               db.close();
              });
           }
