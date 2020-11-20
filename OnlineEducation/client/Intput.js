@@ -3,8 +3,14 @@ import { Template } from 'meteor/templating';
 
 Template.RecordByRecordTemplate.events({
     'click #uploadRecord':function(event){
+       
+
+      
         console.log("Inserting Data");
         var case_id = document.getElementById('caseid_text').value;
+
+
+
         var hospital_code = document.getElementById('hosptialcode_text').value;
         var hospital_type_code = document.getElementById('hospitaltypecode_text').value;
         var city_code_hospital = document.getElementById('citycode_text').value;
@@ -23,14 +29,26 @@ Template.RecordByRecordTemplate.events({
         var admission_deposit = document.getElementById('admission_text').value;
         var stay_date = document.getElementById('stay_text').value;
         var functionname = "UploadRecordByRecord";
-        
-         Meteor.call(functionname.toString(),case_id, hospital_code, hospital_type_code,
-         city_code_hospital, hospital_region_code, available_rooms, department, ward_type, ward_facility_code,
-         bed_grade, patientid, city_code_patient, type_of_admission, severity_of_illness, visitors_with_patient,
-         age, admission_deposit, stay_date, function(err, res){
-               if (err) console.log("mongoDB Error");
-               else console.log("Record Submission Success");
-         })
-         alert("1 document inserted");;
+            
+        if (case_id === "" || hospital_code === "" ||hospital_type_code === "" || city_code_hospital === "" || hospital_region_code=== "" ||
+         available_rooms === ""|| department=== "" || ward_type=== ""||ward_facility_code=== "" || bed_grade=== "" || patientid=== "" || 
+         city_code_patient=== "" || type_of_admission=== ""|| severity_of_illness=== "" || visitors_with_patient=== "" || age=== "" || 
+         admission_deposit=== "" || stay_date == "")
+            {
+                  
+            }
+        else{
+            event.preventDefault(); //Prevents page relod
+            Meteor.call(functionname.toString(),case_id, hospital_code, hospital_type_code,
+            city_code_hospital, hospital_region_code, available_rooms, department, ward_type, ward_facility_code,
+            bed_grade, patientid, city_code_patient, type_of_admission, severity_of_illness, visitors_with_patient,
+            age, admission_deposit, stay_date, function(err, res){
+                  if (err) console.log("mongoDB Error");
+                  else console.log("Record Submission Success");
+            })
+            alert("1 document inserted");
+            ;
+        }
+         
       },
 });
