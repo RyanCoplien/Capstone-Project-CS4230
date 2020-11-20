@@ -4,7 +4,10 @@
 
 <body>
   <h1>This is Whack</h1>
-
+  <h3> Enhancement request</h3>
+  {{> enhancement}}
+  <br><br>
+  <h3> Query Panel</h3>
   {{> QueryPanel}}
   {{> DashBoard}}
   {{>TabularRecords}}
@@ -15,6 +18,37 @@
   {{> QueryTemplate}}
   {{> QueryResults}}
 </body>
+
+<template name = "enhancement">
+  <div>
+    <p>Enter Search Criteria</p>
+    <input type="text" id="searchterm" required>
+    <p> Select Field to Search</p>
+    <select name="choose2" id="dropdown2">
+      <option value="case_id">Case ID</option>
+      <option value="Hospital_code">Hospital Code</option>
+      <option value="Hospital_type_code">Type Code</option>
+      <option value="City_Code_Hospital">City Code</option>
+      <option value="Hospital_region_code">Region Code</option>
+      <option value="Available Extra Rooms in Hospital">Availability</option>
+      <option value="Department">Department</option>
+      <option value="Ward_Type">Ward Type</option>
+      <option value="Ward_Facility_Code">Facility Code</option>
+      <option value="Bed Grade">Bed Grade</option>
+      <option value="patientID">Patient ID</option>
+      <option value="City_Code_Patient">Patient Code</option>
+      <option value="Type of Admission">Admission Type</option>
+      <option value="Severity of Illness">Severity</option>
+      <option value="Visitors with Patient">Visitors Allowed</option>
+      <option value="Age">Age</option>
+      <option value="Admission_Deposit">Admission Deposit</option>
+      <option value="Stay">Stay Duration</option>
+   </select>
+   <input type="button" id="ensearch" value="Search">
+  </div>
+  <div style="width: 80%rem; height:400px; overflow:auto;"><table id="showData2"></table></div>
+</template>
+
 
 <template name = "QueryPanel">
   <div>
@@ -143,26 +177,26 @@
   <h3> Query The Database</h3>
   <label for="choose">Choose a Field to Query:</label>
   <form>
-  <select name="choose" id="dropdown">
-     <option value="case_id">Case ID</option>
-     <option value="Hospital_code">Hospital Code</option>
-     <option value="Hospital_type_code">Type Code</option>
-     <option value="City_code_Hospital">City Code</option>
-     <option value="Hospital_region_code">Region Code</option>
-     <option value="Available">Availability</option>
-     <option value="Department">Department</option>
-     <option value="Ward_Type">Ward Type</option>
-     <option value="Ward_Facility_Code">Facility Code</option>
-     <option value="BedGrade">Bed Grade</option>
-     <option value="patientID">Patient ID</option>
-     <option value="City_Code_Patient">Patient Code</option>
-     <option value="TypeOfAdmission">Admission Type</option>
-     <option value="SeverityOfIllness">Severity</option>
-     <option value="Visitors">Visitors Allowed</option>
-     <option value="age">Age</option>
-     <option value="Admission_Deposit">Admission Deposit</option>
-     <option value="Stay">Stay Duration</option>
-  </select>
+    <select name="choose2" id="dropdown2">
+      <option value="case_id">Case ID</option>
+      <option value="Hospital_code">Hospital Code</option>
+      <option value="Hospital_type_code">Type Code</option>
+      <option value="City_Code_Hospital">City Code</option>
+      <option value="Hospital_region_code">Region Code</option>
+      <option value="Available Extra Rooms in Hospital">Availability</option>
+      <option value="Department">Department</option>
+      <option value="Ward_Type">Ward Type</option>
+      <option value="Ward_Facility_Code">Facility Code</option>
+      <option value="Bed Grade">Bed Grade</option>
+      <option value="patientID">Patient ID</option>
+      <option value="City_Code_Patient">Patient Code</option>
+      <option value="Type of Admission">Admission Type</option>
+      <option value="Severity of Illness">Severity</option>
+      <option value="Visitors with Patient">Visitors Allowed</option>
+      <option value="Age">Age</option>
+      <option value="Admission_Deposit">Admission Deposit</option>
+      <option value="Stay">Stay Duration</option>
+   </select>
   <div>
   <div class="inputTitle">Enter Search Term</div>
   <input type="text" id="input" class="comment_input" required>

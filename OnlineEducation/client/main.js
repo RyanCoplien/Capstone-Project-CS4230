@@ -9,6 +9,7 @@ import './Query.js';
 import './QueryPanel.js';
 import './QueryResults.js';
 import './BulkUpload.js';
+import './enhancement.js'
 
 
 //This gets rid of routes as it causes a pop-up if no route are defined
