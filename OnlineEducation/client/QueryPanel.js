@@ -25,6 +25,7 @@ Template.QueryPanel.events({
                 }
                 percent = 100*(Extreme/Radtherapy); //find the percent of extreme radtherapy patients
             }
+            console.log("Result: " + percent.toPrecision(4));
             document.getElementById("clientside").value = percent.toPrecision(4) + "% of Radiotherapy Patients are from the ER."
         })
         console.timeEnd("Client Count Timer");
@@ -32,12 +33,12 @@ Template.QueryPanel.events({
 
     'click #buttonServer':async function(event){
         var percent;
-        
+        console.time("Server Count Timer");
         percent = Meteor.call('ServerSideCount',function(err, res){ //calls the meteor function in the server/main.js
-            console.log("Result" + res);
+            console.log("Result: " + res);
             document.getElementById("clientside").value = res.toPrecision(4) + "% of Radiotherapy Patients are from the ER."
         });
-        
+        console.timeEnd("Server Count Timer");
     }
 
 

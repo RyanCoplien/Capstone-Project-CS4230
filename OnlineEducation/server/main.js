@@ -30,7 +30,6 @@ Meteor.startup(() => {
       return future.wait();
     }, 
     ServerSideCount:async function(){
-      console.time("Server Count Timer");
       console.log("Inside Server Side Count");
       var http = require("http");
       var MongoClient = require("mongodb").MongoClient; 
@@ -60,7 +59,6 @@ Meteor.startup(() => {
               percent = 100*(Extreme/Rad); //ORIGINAL CODE WITHOUT HARDCODING NUMBERS
               console.log(percent); 
               future.return(percent); //Return it
-              console.timeEnd("Server Count Timer");
               db.close();
           });
             });
