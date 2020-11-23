@@ -64,8 +64,10 @@
 </template>
 
 <template name ="BulkUpload">
-  <input type='file' id="upload" name="filename">
+  <form>
+  <input type='file' id="upload" name="filename" required>
   <input type="submit" id="buttonBulkUpload" value="Bulk Upload">
+  </form>
 </template>
 
 <template name="RecordByRecordTemplate">
