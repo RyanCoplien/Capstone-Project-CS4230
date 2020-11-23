@@ -139,6 +139,8 @@
   <input type="button" id="DataViewbtn" value="View MongoDB Data">
   <br><br>
   <div style="width: 80%rem; height:400px; overflow:auto;"><table id="showDataView"></table></div>
+  <p>You are viewing records from {{counter2}} to {{counter}} Click the View Data to show the next set of 10,000 records.</p>
+  <b>This will take awhile to load each time so please wait.</b><br><br>
 </template>
 
 <template name="QueryTemplate">
@@ -146,7 +148,7 @@
   <h3> Query The Database</h3>
   <label for="choose">Choose a Field to Query:</label>
   <form>
-    <select name="choose2" id="dropdown2">
+    <select name="choose" id="dropdown">
       <option value="case_id">Case ID</option>
       <option value="Hospital_code">Hospital Code</option>
       <option value="Hospital_type_code">Type Code</option>

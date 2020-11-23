@@ -1,17 +1,40 @@
 import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 
+Template.DataView.onCreated(function helloOnCreated() {
+    this.counter = new ReactiveVar(0);
+    this.counter2 = new ReactiveVar(0);
+});
 
+Template.DataView.helpers({
+    counter() {
+      return Template.instance().counter.get();
+    },
+    counter2() {
+        return Template.instance().counter2.get();
+      },
+  });
 
 Template.DataView.events({
-    'click #DataViewbtn':function(event){
+    'click #DataViewbtn':function(event,instance){
+        instance.counter.set(instance.counter.get() + 10000);
+        counter = instance.counter.get();
+        counter2 = counter - 10000
+        instance.counter2.set(counter2);
+
+
         alert("This will take a while, and might crash the browesr.")
         console.log("Beginning Query")
-
+        var data;
 
         Meteor.call('ViewData',function(err, res){
 
-        var hospitalRecords = res;
-        console.log("Data Aquired");
+            data = res;
+
+            //gets the set of data
+            //this splices the records by the counter
+            hospitalRecords = data.slice(counter2,counter)
+
             // EXTRACT VALUE FOR HTML HEADER. 
             var col = [];
             for (var i = 0; i < hospitalRecords.length; i++) {
@@ -47,6 +70,7 @@ Template.DataView.events({
                  var divContainer = document.getElementById("showDataView"); //appends data to html
                  divContainer.innerHTML = "";
                  divContainer.appendChild(table);
+                 
         })
     },
 });
