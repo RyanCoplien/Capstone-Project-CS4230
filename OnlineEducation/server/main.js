@@ -115,7 +115,9 @@ Meteor.startup(() => {
       console.log(query);
       console.log(field);
       var finalQuery = {}; //creates query params
-      finalQuery[field] = query; //creates query
+      tempQuery = query + "*";
+      console.log(tempQuery);
+      finalQuery[field] = {$regex: tempQuery}; //creates query
         var http = require("http");
         var MongoClient = require("mongodb").MongoClient;
         var url="mongodb://localhost:27017/";
