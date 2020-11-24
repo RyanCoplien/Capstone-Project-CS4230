@@ -125,7 +125,7 @@ Meteor.startup(() => {
         MongoClient.connect(url, function(err,db){ //connects to DB
           if (err) throw err;
           console.log("inside query");
-          console.log(finalQuery);
+          console.log(finalQuery);d
           var dbo = db.db("Hospital"); //set db name
           dbo.collection("RawData").find(finalQuery).toArray(function(err,result){ //query collection with criteria
             if (err) console.log(err);
@@ -238,8 +238,9 @@ Meteor.startup(() => {
             console.log("Inside enhancement");
             console.log(query);
             console.log(field);
+            tempQuery = query + "*";
             var finalQuery = {}; //creates query params
-            finalQuery[field] = query; //creates query
+            finalQuery[field] = {$regex: tempQuery}; //creates query
               var http = require("http");
               var MongoClient = require("mongodb").MongoClient;
               var url="mongodb://localhost:27017/";

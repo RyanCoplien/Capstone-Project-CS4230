@@ -15,8 +15,7 @@ Template.enhancement.events({
         functionname = "Enhancement";
         var field = document.getElementById("dropdown2").value;
         var search = document.getElementById("searchterm").value;
-        query = "{$regex:" + " /" + search +"/, $options:" + "'i'" + "}";
-        Meteor.call(functionname.toString(),field,query,function(err,result){
+        Meteor.call(functionname.toString(),field,search,function(err,result){
             var table = document.createElement("table");
             table.innerHTML = "";
             
