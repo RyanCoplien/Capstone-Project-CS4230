@@ -1,5 +1,16 @@
 import { Template } from 'meteor/templating';
 
+Template.QueryTemplate.onCreated(function helloOnCreated() {
+    this.counter7 = new ReactiveVar(0);
+});
+
+Template.QueryTemplate.helpers({
+    counter7() {
+      return Template.instance().counter.get();
+    },
+  });
+
+
 Template.QueryTemplate.events({
     'click #submitQuery'(event, instance) {
         console.log("Looking for query");
@@ -51,5 +62,6 @@ Template.QueryTemplate.events({
                  divContainer.innerHTML = "";
                  divContainer.appendChild(table);
         })
+        instance.counter7.set(instance.counter7.get() + 1);
     },
 });

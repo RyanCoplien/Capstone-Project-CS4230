@@ -1,8 +1,17 @@
 import { Template } from 'meteor/templating';
 
+Template.RecordByRecordTemplate.onCreated(function helloOnCreated() {
+    this.counter6 = new ReactiveVar(0);
+});
+
+Template.RecordByRecordTemplate.helpers({
+    counter6() {
+      return Template.instance().counter6.get();
+    },
+  });
 
 Template.RecordByRecordTemplate.events({
-    'click #uploadRecord':function(event){
+    'click #uploadRecord':function(event,instance){
        
 
       
@@ -46,6 +55,7 @@ Template.RecordByRecordTemplate.events({
                   if (err) console.log("mongoDB Error");
                   else console.log("Record Submission Success");
             })
+            instance.counter6.set(instance.counter6.get() + 1);
             alert("1 document inserted");
             ;
         }

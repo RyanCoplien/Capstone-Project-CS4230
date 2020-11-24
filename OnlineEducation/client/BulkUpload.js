@@ -1,8 +1,17 @@
 import { Template } from 'meteor/templating';
 
+Template.BulkUpload.onCreated(function helloOnCreated() {
+    this.counter3 = new ReactiveVar(0);
+});
+
+Template.BulkUpload.helpers({
+    counter3() {
+      return Template.instance().counter3.get();
+    },
+  });
 
 Template.BulkUpload.events({
-    'click #buttonBulkUpload':function(event){
+    'click #buttonBulkUpload':function(event,instance){
         console.log("Uploading Bulk Data");
         var inputFile = document.querySelector('#upload').files[0];
         var reader = new FileReader();
@@ -45,10 +54,10 @@ Template.BulkUpload.events({
                           return;
                         }
                       });                     
-                    counter =counter + 1;
-                    console.log(counter);                   
+                    instance.counter3.set(instance.counter3.get() + 1);
+                    console.log(instance.counter3.get());
+                    alert(instance.counter3.get() + ": Documents that have been Uploaded")                   
                 }
-                    alert(counter + " documents were uploaded");
             }           
       },
     

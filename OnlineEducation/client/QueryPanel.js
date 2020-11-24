@@ -1,15 +1,21 @@
 import { Template } from 'meteor/templating';
 
-Template.QueryPanel.onCreated(function querypanelOnCreated(){
-
+Template.QueryPanel.onCreated(function helloOnCreated() {
+    this.counter8 = new ReactiveVar(0);
+    this.counter9 = new ReactiveVar(0);
 });
 
 Template.QueryPanel.helpers({
-
-});
+    counter8() {
+      return Template.instance().counter8.get();
+    },
+    counter9() {
+        return Template.instance().counter8.get();
+      },
+  });
 
 Template.QueryPanel.events({
-    'click #buttonClient':function(event){
+    'click #buttonClient':function(event,instance){
         console.time("Client Count Timer");
         console.log("Inside Client");
         Meteor.call('ClientSideCount',function(err, res){ //calls the meteor function in the server/main.js
@@ -29,9 +35,10 @@ Template.QueryPanel.events({
             document.getElementById("clientside").value = percent.toPrecision(4) + "% of Radiotherapy Patients are from the ER."
         })
         console.timeEnd("Client Count Timer");
+        instance.counter8.set(instance.counter8.get() + 1);
     },
 
-    'click #buttonServer':async function(event){
+    'click #buttonServer':async function(event,instance){
         var percent;
         console.time("Server Count Timer");
         percent = Meteor.call('ServerSideCount',function(err, res){ //calls the meteor function in the server/main.js
@@ -39,6 +46,7 @@ Template.QueryPanel.events({
             document.getElementById("clientside").value = res.toPrecision(4) + "% of Radiotherapy Patients are from the ER."
         });
         console.timeEnd("Server Count Timer");
+        instance.counter9.set(instance.counter9.get() + 1);
     }
 
 

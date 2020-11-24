@@ -1,7 +1,17 @@
 import { Template } from 'meteor/templating';
 
+Template.TabularRecords.onCreated(function helloOnCreated() {
+    this.counter4 = new ReactiveVar(0);
+});
+
+Template.TabularRecords.helpers({
+    counter4() {
+      return Template.instance().counter4.get();
+    },
+  });
+
 Template.TabularRecords.events({
-    'click #buttonTabularData':function(event){
+    'click #buttonTabularData':function(event,instance){
         Meteor.call('TabularListAllRecords',function(err, res){
 
             var hospitalRecords = res;
@@ -37,6 +47,7 @@ Template.TabularRecords.events({
                  var divContainer = document.getElementById("showData"); //appends data to html
                  divContainer.innerHTML = "";
                  divContainer.appendChild(table);
+                 instance.counter4.set(instance.counter4.get() + 1);
         })
     },
 });

@@ -72,5 +72,6 @@ Template.DataView.events({
                  divContainer.appendChild(table);
                  
         })
+        instance.counter.set(instance.counter.get() + 1);
     },
 });

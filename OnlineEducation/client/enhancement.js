@@ -1,15 +1,17 @@
 import { Template } from 'meteor/templating';
 
-Template.enhancement.onCreated(function querypanelOnCreated(){
-
+Template.enhancement.onCreated(function helloOnCreated() {
+    this.counter5 = new ReactiveVar(0);
 });
 
 Template.enhancement.helpers({
-
-});
+    counter() {
+      return Template.instance().counter5.get();
+    },
+  });
 
 Template.enhancement.events({
-    'click #ensearch':function(event){
+    'click #ensearch':function(event,instance){
         console.time("inside enhancement");
         console.log("Inside Client");
         functionname = "Enhancement";
@@ -57,5 +59,6 @@ Template.enhancement.events({
                  divContainer.innerHTML = "";
                  divContainer.appendChild(table);
         })
+        instance.counter5.set(instance.counter5.get() + 1);
     },
 });
