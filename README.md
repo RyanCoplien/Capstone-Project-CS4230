@@ -1,7 +1,7 @@
 # Application and Information Systems Capstone Project
 
 This project is an accumulation of programs and modules created for CS 4230 (Application in Information Systems)
-Out of a total of 10 project parts, it mainly utilizes Javascript and MongoDB, as well as Python to process:
+Out of a total of 10 project parts, it mainly utilizes Javascript (in Meteor.js framework) and MongoDB, as well as Python to process:
   - Creation and updating of sequential and indexed, fixed, and variable-length records
   - Implementation of various sorting algorithims including BubbleSort, QuickSort and MongoDB sort, comparing the execution time
   - Implementation of various searching algorithims including Sequential Search, Binary Search and MongoDB find, comparing the execution time
